@@ -13,8 +13,8 @@ const BlogList = ({blogs, title, categories}) => {
                     <h2>{blog.title}</h2>
                     <p>Written by {blog.author}</p>
                     {categories.map((category) => (
-                    <ul>
-                        <li>{category}</li>
+                    <ul className="categories">
+                        <li><a href="=">{category}</a></li>
                     </ul>
             ))}
         
