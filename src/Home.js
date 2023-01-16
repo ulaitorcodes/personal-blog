@@ -10,11 +10,16 @@ const Home = () => {
         
     ]);
     const categories = ["Business", "Politics", "Education"]
+
+    const handleDelete = (id) => {
+        const newBlogs = blogs.filter(blog => blog.id !== id);
+        setBlogs(newBlogs);
+    }
     
     return ( 
         <div className="home">
-            <BlogList blogs={blogs} title="All posts" categories={categories}/>
-            <BlogList blogs={blogs.filter((blog) => blog.author === 'Mario')} title="Mario's blog" categories={categories}/>
+            <BlogList blogs={blogs} title="All posts" categories={categories} handleDelete={handleDelete}/>
+            <BlogList blogs={blogs.filter((blog) => blog.author === 'Mario')} title="Mario's blog" categories={categories} />
 
         </div>
     );

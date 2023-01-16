@@ -1,8 +1,5 @@
-const BlogList = ({blogs, title, categories}) => {
-    // const blogs = props.blogs
-    // const title = props.title
-    // const categories = props.categories
-
+const BlogList = ({blogs, title, categories, handleDelete}) => {
+   
     return (
         <div className="blog-list">
             <h2>{title}</h2>
@@ -12,6 +9,7 @@ const BlogList = ({blogs, title, categories}) => {
                 <div className="blog-preview" key={blog.id}>
                     <h2>{blog.title}</h2>
                     <p>Written by {blog.author}</p>
+                    <button onClick={() => handleDelete(blog.id)}>Delete Blog</button>
                     {categories.map((category) => (
                     <ul className="categories">
                         <li><a href="=">{category}</a></li>
