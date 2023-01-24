@@ -4,22 +4,27 @@ import BlogList from './BlogList'
 
 const Home = () => {
     const [blogs, setBlogs] = useState(null);
-    const categories = ["Business", "Politics", "Education"]
+    const [isPending, setIsPending] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:8000/blogs/')
-        .then(res => {
-            return res.json();
-        })
-        .then((data) => {
-            console.log(data)
-            setBlogs(data)
-        })
+        setTimeout(() => {
+            fetch('http://localhost:8000/blogs/')
+            .then(res => {
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data)
+                setBlogs(data)
+                setIsPending(false  )
+            })
+        }, 1000)
+       
         
     }, []);
     
     return ( 
         <div className="home">
+        {isPending && <div><img src="https://icon-library.com/images/spinner-icon-gif/spinner-icon-gif-13.jpg" alt="" srcset="" /></div>}
           {blogs && <BlogList blogs={blogs} title="All posts" />}
 
 
